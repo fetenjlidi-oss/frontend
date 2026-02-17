@@ -1,0 +1,115 @@
+Property 'withServerTransition' does not exist on type 'typeof BrowserModule'.ts(2339)
+<section class="min-h-screen bg-slate-950 flex items-center justify-center px-4">
+  <div class="w-full max-w-6xl grid gap-10 md:grid-cols-[1.1fr_1fr] items-center">
+    <!-- Left panel: branding & context -->
+    <div class="space-y-6 text-slate-100">
+   {{title}}
+   {{age}}
+    </div>
+
+    <!-- Right panel: login card -->
+    <div class="w-full md:max-w-md mx-auto">
+      <div class="rounded-2xl border border-slate-800 bg-slate-950/80 shadow-2xl shadow-black/50 backdrop-blur-xl">
+        <div class="border-b border-slate-800 px-6 py-4 flex items-center justify-between">
+          <div>
+            <p class="text-xs uppercase tracking-[0.2em] text-slate-400">Staff login</p>
+            <p class="text-sm text-slate-200">Authorized medical personnel only</p>
+          </div>
+          <div class="flex items-center space-x-1 text-[11px] text-slate-400">
+            <span class="h-1.5 w-1.5 rounded-full bg-emerald-400"></span>
+            <span>System status: <span class="text-emerald-300">Operational</span></span>
+          </div>
+        </div>
+
+        <div class="px-6 py-7 space-y-6">
+          <div class="space-y-1">
+            <h2 class="text-xl font-semibold text-slate-50">Sign in to MediFlow</h2>
+            <p class="text-xs text-slate-400">
+              Use your institutional email and secure password.
+            </p>
+          </div>
+
+          <form class="space-y-5" [formGroup]="forms" (ngSubmit)="submit()">
+            <div class="space-y-2">
+              <label for="email" class="block text-xs font-medium text-slate-200">
+                Professional email
+              </label>
+              <input
+                type="email"
+                id="email"
+                name="email"
+                  formControlName="email"
+                placeholder="firstname.lastname@hospital.org"
+                class="block w-full rounded-lg border border-slate-700 bg-slate-950 px-3 py-2.5 text-sm text-slate-100 placeholder-slate-500 focus:border-emerald-400 focus:ring-2 focus:ring-emerald-400/60 outline-none transition"
+                required
+              />
+               <span  *ngIf="forms.get('email')?.errors?.['email']" class=" text-red-800 font-weight-700 text-balance block text-xs font-medium text-slate-200 text-red">
+The domain name is missing (example: gmail.com).           
+               </span>
+
+            </div>
+
+            <div class="space-y-2">
+              <div class="flex items-center justify-between">
+                <label for="password" class="block text-xs font-medium text-slate-200">
+                  Password
+                </label>
+                <a href="#" class="text-[11px] font-medium text-emerald-300 hover:text-emerald-200 hover:underline">
+                  Forgot password?
+                </a>
+              </div>
+              <input
+                type="password"
+                id="password"
+                name="password"
+                placeholder="••••••••"
+                  formControlName="password"
+                class="block w-full rounded-lg border border-slate-700 bg-slate-950 px-3 py-2.5 text-sm text-slate-100 placeholder-slate-500 focus:border-emerald-400 focus:ring-2 focus:ring-emerald-400/60 outline-none transition"
+                required
+              />
+                  <span  *ngIf="forms.get('password')?.errors?.['minlength']" class=" text-red-800 font-weight-700 text-balance block text-xs font-medium text-slate-200 text-red">
+ Le mot de passe doit contenir au moins 4 caractères.          
+               </span>
+            </div>
+
+            <div class="flex items-center justify-between">
+              <label class="inline-flex items-center space-x-2 text-[11px] text-slate-300">
+                <input
+                  id="remember"
+                  type="checkbox"
+                  class="h-4 w-4 rounded border-slate-600 bg-slate-950 text-emerald-400 focus:ring-emerald-400/60"
+                />
+                <span>Keep this session on this device</span>
+              </label>
+              <span class="inline-flex items-center rounded-full border border-amber-400/40 bg-amber-500/10 px-3 py-1 text-[10px] font-medium text-amber-200">
+                Emergency access available
+              </span>
+            </div>
+
+            <button
+              type="submit"  
+              class="w-full inline-flex items-center justify-center rounded-lg bg-gradient-to-r from-emerald-500 to-cyan-400 px-4 py-2.5 text-sm font-semibold text-white shadow-lg shadow-emerald-500/40 hover:from-emerald-500 hover:to-cyan-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-400/80 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-950 transition"
+            >
+              Access clinical dashboard
+            </button>
+          </form>
+
+          <div class="pt-1 text-[11px] text-slate-500 space-y-1">
+            <p>
+              Having trouble signing in?
+              <a href="#" class="text-emerald-300 hover:text-emerald-200 hover:underline font-medium">
+                Contact IT support
+              </a>
+            </p>
+            <p>
+              Unauthorized access to this system is prohibited and monitored.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <p class="mt-5 text-center text-[11px] text-slate-500">
+      </p>
+    </div>
+  </div>
+</section>
