@@ -4,6 +4,7 @@ import { BrowserModule, provideClientHydration, withEventReplay } from '@angular
 import { AppRoutingModule } from './app-routing-module';
 import { App } from './app';
 import { initFlowbite } from 'flowbite';
+import { RouterModule } from '@angular/router';
 
 @NgModule({
   declarations: [
@@ -11,7 +12,8 @@ import { initFlowbite } from 'flowbite';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    
+    AppRoutingModule,RouterModule
   ],
   providers: [
     provideBrowserGlobalErrorListeners(),
