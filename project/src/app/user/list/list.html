@@ -1,0 +1,152 @@
+<section class="bg-gray-50 dark:bg-gray-900 py-3 sm:py-5">
+  <div class="px-4 mx-auto max-w-screen-2xl lg:px-12">
+    <div class="relative overflow-hidden bg-white shadow-md dark:bg-gray-800 sm:rounded-lg">
+      <div class="flex flex-col px-4 py-3 space-y-3 lg:flex-row lg:items-center lg:justify-between lg:space-y-0 lg:space-x-4">
+        <div class="flex items-center flex-1 space-x-4">
+          <h5>
+            <span class="text-gray-500">All Users:</span>
+            <span class="dark:text-white font-semibold">{{ users.length }}</span>
+          </h5>
+          <h5>
+            <span class="text-gray-500">Active:</span>
+            <span class="dark:text-white font-semibold">{{ activeCount }}</span>
+          </h5>
+        </div>
+        <div class="flex flex-col flex-shrink-0 space-y-3 md:flex-row md:items-center lg:justify-end md:space-y-0 md:space-x-3">
+          <button
+            type="button"
+            (click)="goToAdd()"
+            class="flex items-center justify-center px-4 py-2 text-sm font-medium text-white rounded-lg bg-blue-600 hover:bg-blue-700 focus:ring-4 focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800"
+          >
+            <svg class="h-3.5 w-3.5 mr-2" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <path clip-rule="evenodd" fill-rule="evenodd" d="M10 3a1 1 0 011 1v5h5a1 1 0 110 2h-5v5a1 1 0 11-2 0v-5H4a1 1 0 110-2h5V4a1 1 0 011-1z" />
+            </svg>
+            Add new user
+          </button>
+        </div>
+      </div>
+
+      <div class="overflow-x-auto">
+        <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
+          <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+            <tr>
+              <th scope="col" class="p-4">
+                <div class="flex items-center">
+                  <input
+                    id="checkbox-all"
+                    type="checkbox"
+                    [checked]="isAllSelected"
+                    (change)="toggleAll(!isAllSelected)"
+                    class="w-4 h-4 bg-gray-100 border-gray-300 rounded text-blue-600 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
+                  />
+                  <label for="checkbox-all" class="sr-only">checkbox</label>
+                </div>
+              </th>
+              <th scope="col" class="px-4 py-3">Email</th>
+              <th scope="col" class="px-4 py-3">First name</th>
+              <th scope="col" class="px-4 py-3">Last name</th>
+              <th scope="col" class="px-4 py-3">Username</th>
+              <th scope="col" class="px-4 py-3">Role</th>
+              <th scope="col" class="px-4 py-3">Active</th>
+              <th scope="col" class="px-4 py-3">Verified</th>
+              <th scope="col" class="px-4 py-3">Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            @if (loading) {
+              <tr>
+                <td colspan="9" class="px-4 py-8 text-center text-gray-500 dark:text-gray-400">Loading...</td>
+              </tr>
+            } @else if (users.length === 0) {
+              <tr>
+                <td colspan="9" class="px-4 py-8 text-center text-gray-500 dark:text-gray-400">No users found.</td>
+              </tr>
+            } @else {
+              @for (user of users; track user.id ?? $index) {
+                <tr class="border-b dark:border-gray-600 hover:bg-gray-100 dark:hover:bg-gray-700">
+                  <td class="w-4 px-4 py-3">
+                    <div class="flex items-center">
+                      <input
+                        [id]="'checkbox-' + user.id"
+                        type="checkbox"
+                        [checked]="isSelected(user.id)"
+                        (change)="toggleOne(user.id, !isSelected(user.id))"
+                        (click)="$event.stopPropagation()"
+                        class="w-4 h-4 bg-gray-100 border-gray-300 rounded text-blue-600 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
+                      />
+                      <label [for]="'checkbox-' + user.id" class="sr-only">checkbox</label>
+                    </div>
+                  </td>
+                  <td class="px-4 py-2 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                    {{ user.email }}
+                  </td>
+                  <td class="px-4 py-2 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                    {{ user.first_name }}
+                  </td>
+                  <td class="px-4 py-2 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                    {{ user.last_name }}
+                  </td>
+                  <td class="px-4 py-2 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                    {{ user.username }}
+                  </td>
+                  <td class="px-4 py-2">
+                    <span
+                      class="bg-blue-100 text-blue-800 text-xs font-medium px-2 py-0.5 rounded dark:bg-blue-900 dark:text-blue-300"
+                    >
+                      {{ user.role }}
+                    </span>
+                  </td>
+                  <td class="px-4 py-2">
+                    @if (user.is_active) {
+                      <span class="bg-green-100 text-green-800 text-xs font-medium px-2 py-0.5 rounded dark:bg-green-900 dark:text-green-300">Yes</span>
+                    } @else {
+                      <span class="bg-red-100 text-red-800 text-xs font-medium px-2 py-0.5 rounded dark:bg-red-900 dark:text-red-300">No</span>
+                    }
+                  </td>
+                  <td class="px-4 py-2">
+                    @if (user.is_verified) {
+                      <span class="bg-green-100 text-green-800 text-xs font-medium px-2 py-0.5 rounded dark:bg-green-900 dark:text-green-300">Yes</span>
+                    } @else {
+                      <span class="bg-gray-100 text-gray-800 text-xs font-medium px-2 py-0.5 rounded dark:bg-gray-700 dark:text-gray-300">No</span>
+                    }
+                  </td>
+                  <td class="px-4 py-2">
+                    <div class="flex items-center gap-2">
+                      @if (user.id) {
+                        <button
+                          type="button"
+                          (click)="goToUpdate(user.id!)"
+                          class="font-medium text-blue-600 hover:underline dark:text-blue-500"
+                        >
+                          Edit
+                        </button>
+                        <button
+                          type="button"
+                          (click)="goToDelete(user.id!)"
+                          class="font-medium text-red-600 hover:underline dark:text-red-500"
+                        >
+                          Delete
+                        </button>
+                      }
+                    </div>
+                  </td>
+                </tr>
+              }
+            }
+          </tbody>
+        </table>
+      </div>
+
+      @if (users.length > 0 && !loading) {
+        <nav class="flex flex-col items-start justify-between p-4 space-y-3 md:flex-row md:items-center md:space-y-0" aria-label="Table navigation">
+          <span class="text-sm font-normal text-gray-500 dark:text-gray-400">
+            Showing
+            <span class="font-semibold text-gray-900 dark:text-white">1-{{ users.length }}</span>
+            of
+            <span class="font-semibold text-gray-900 dark:text-white">{{ users.length }}</span>
+          </span>
+        </nav>
+      }
+    </div>
+  </div>
+</section>
