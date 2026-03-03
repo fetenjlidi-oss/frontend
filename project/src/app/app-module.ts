@@ -5,6 +5,7 @@ import { AppRoutingModule } from './app-routing-module';
 import { App } from './app';
 import { initFlowbite } from 'flowbite';
 import { RouterModule } from '@angular/router';
+import { CoreModule } from './core/core-module';
 
 @NgModule({
   declarations: [
@@ -13,7 +14,7 @@ import { RouterModule } from '@angular/router';
   imports: [
     BrowserModule,
     
-    AppRoutingModule,RouterModule
+    AppRoutingModule,RouterModule,CoreModule
   ],
   providers: [
     provideBrowserGlobalErrorListeners(),

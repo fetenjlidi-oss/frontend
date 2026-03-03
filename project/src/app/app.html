@@ -1,1 +1,12 @@
-<router-outlet></router-outlet>
+
+<div class="min-h-screen bg-slate-50 dark:bg-slate-950">
+  <app-header class="block" *ngIf="showMenu"></app-header>
+
+  <div class="mx-auto flex max-w-screen-2xl">
+     <app-sidenav class="hidden sm:block"  *ngIf="showMenu"></app-sidenav> 
+
+    <main class="min-w-10 flex-1 px-4 py-4 lg:px-6 flex items-center justify-center">
+      <router-outlet></router-outlet>
+    </main>
+  </div>
+</div>
