@@ -1,0 +1,157 @@
+<div class="min-h-screen bg-gray-100 py-12 px-4">
+  <div class="max-w-2xl mx-auto bg-white rounded-lg shadow-md p-8">
+    <h1 class="text-3xl font-bold mb-6 text-gray-800">Create New Patient</h1>
+
+    <form [formGroup]="patientForm" (ngSubmit)="onSubmit()">
+      <!-- ID Field -->
+      <div class="mb-6">
+        <label for="id" class="block text-sm font-medium text-gray-700 mb-2">ID</label>
+        <input
+          type="text"
+          id="id"
+          formControlName="id"
+          class="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+          placeholder="Enter patient ID"
+        />
+        <div *ngIf="submitted && f['id'].errors" class="text-red-500 text-sm mt-1">
+          <span *ngIf="f['id'].errors['required']">ID is required</span>
+        </div>
+      </div>
+
+      <!-- Email Field -->
+      <div class="mb-6">
+        <label for="email" class="block text-sm font-medium text-gray-700 mb-2">Email</label>
+        <input
+          type="email"
+          id="email"
+          formControlName="email"
+          class="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+          placeholder="Enter email address"
+        />
+        <div *ngIf="submitted && f['email'].errors" class="text-red-500 text-sm mt-1">
+          <span *ngIf="f['email'].errors['required']">Email is required</span>
+          <span *ngIf="f['email'].errors['email']">Email must be valid</span>
+        </div>
+      </div>
+
+      <!-- First Name Field -->
+      <div class="mb-6">
+        <label for="first_name" class="block text-sm font-medium text-gray-700 mb-2">First Name</label>
+        <input
+          type="text"
+          id="first_name"
+          formControlName="first_name"
+          class="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+          placeholder="Enter first name"
+        />
+        <div *ngIf="submitted && f['first_name'].errors" class="text-red-500 text-sm mt-1">
+          <span *ngIf="f['first_name'].errors['required']">First name is required</span>
+          <span *ngIf="f['first_name'].errors['minlength']">First name must be at least 2 characters</span>
+        </div>
+      </div>
+
+      <!-- Last Name Field -->
+      <div class="mb-6">
+        <label for="last_name" class="block text-sm font-medium text-gray-700 mb-2">Last Name</label>
+        <input
+          type="text"
+          id="last_name"
+          formControlName="last_name"
+          class="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+          placeholder="Enter last name"
+        />
+        <div *ngIf="submitted && f['last_name'].errors" class="text-red-500 text-sm mt-1">
+          <span *ngIf="f['last_name'].errors['required']">Last name is required</span>
+          <span *ngIf="f['last_name'].errors['minlength']">Last name must be at least 2 characters</span>
+        </div>
+      </div>
+
+      <!-- Age Field -->
+      <div class="grid grid-cols-2 gap-4 mb-6">
+        <div>
+          <label for="age" class="block text-sm font-medium text-gray-700 mb-2">Age</label>
+          <input
+            type="number"
+            id="age"
+            formControlName="age"
+            class="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+            placeholder="Enter age"
+          />
+          <div *ngIf="submitted && f['age'].errors" class="text-red-500 text-sm mt-1">
+            <span *ngIf="f['age'].errors['required']">Age is required</span>
+            <span *ngIf="f['age'].errors['min']">Age must be greater than 0</span>
+            <span *ngIf="f['age'].errors['max']">Age must be less than 150</span>
+          </div>
+        </div>
+
+        <!-- Weight Field -->
+    <div>     
+        <div>
+          <label for="weight" class="block text-sm font-medium text-gray-700 mb-2">Weight (kg)</label>
+          <input
+            type="number"
+            id="weight"
+            formControlName="weight"
+            step="0.1"
+            class="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+            placeholder="Enter weight"
+          />
+          <div *ngIf="submitted && f['weight'].errors" class="text-red-500 text-sm mt-1">
+            <span *ngIf="f['weight'].errors['required']">Weight is required</span>
+            <span *ngIf="f['weight'].errors['min']">Weight must be greater than 0</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Height Field -->
+      <div class="mb-6">
+        <label for="height" class="block text-sm font-medium text-gray-700 mb-2">Height (cm)</label>
+        <input
+          type="number"
+          id="height"
+          formControlName="height"
+          step="0.1"
+          class="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+          placeholder="Enter height"
+        />
+        <div *ngIf="submitted && f['height'].errors" class="text-red-500 text-sm mt-1">
+          <span *ngIf="f['height'].errors['required']">Height is required</span>
+          <span *ngIf="f['height'].errors['min']">Height must be greater than 0</span>
+        </div>
+      </div>
+    </div>
+
+      <!-- Chronic Diseases Field -->
+      <div class="mb-6">
+        <label for="chronic_diseases" class="block text-sm font-medium text-gray-700 mb-2">Chronic Diseases</label>
+        <textarea
+          id="chronic_diseases"
+          formControlName="chronic_diseases"
+          rows="4"
+          class="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+          placeholder="Enter chronic diseases (comma-separated)"
+        ></textarea>
+        <div *ngIf="submitted && f['chronic_diseases'].errors" class="text-red-500 text-sm mt-1">
+          <span *ngIf="f['chronic_diseases'].errors['required']">Chronic diseases information is required</span>
+        </div>
+      </div>
+
+      <!-- Buttons -->
+      <div class="flex gap-4">
+        <button
+          type="submit"
+          class="flex-1 bg-blue-600 text-white font-medium py-2 px-4 rounded-md hover:bg-blue-700 transition-colors"
+        >
+          Create Patient
+        </button>
+        <button
+          type="button"
+          (click)="resetForm()"
+          class="flex-1 bg-gray-400 text-white font-medium py-2 px-4 rounded-md hover:bg-gray-500 transition-colors"
+        >
+          Reset
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

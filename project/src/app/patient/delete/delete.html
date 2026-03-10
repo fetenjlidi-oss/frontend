@@ -1,0 +1,141 @@
+<div class="min-h-screen bg-gray-100 py-12 px-4">
+  <div class="max-w-2xl mx-auto bg-white rounded-lg shadow-md p-8">
+    <h1 class="text-3xl font-bold mb-6 text-gray-800">Delete Patient</h1>
+
+    <!-- Search Section -->
+    <div *ngIf="!patientFound" class="mb-8">
+      <h2 class="text-xl font-semibold mb-4 text-gray-700">Search for Patient to Delete</h2>
+      <form [formGroup]="searchForm" (ngSubmit)="onSearch()">
+        <div class="grid grid-cols-2 gap-4 mb-6">
+          <!-- Search By Dropdown -->
+          <div>
+            <label for="searchBy" class="block text-sm font-medium text-gray-700 mb-2">Search By</label>
+            <select
+              id="searchBy"
+              formControlName="searchBy"
+              class="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+            >
+              <option value="id">ID</option>
+              <option value="email">Email</option>
+            </select>
+          </div>
+
+          <!-- Search Value Input -->
+          <div>
+            <label for="searchValue" class="block text-sm font-medium text-gray-700 mb-2">Search Value</label>
+            <input
+              type="text"
+              id="searchValue"
+              formControlName="searchValue"
+              class="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+              placeholder="Enter ID or email"
+            />
+            <div *ngIf="searchForm.submitted && searchF['searchValue'].errors" class="text-red-500 text-sm mt-1">
+              <span *ngIf="searchF['searchValue'].errors['required']">Search value is required</span>
+            </div>
+          </div>
+        </div>
+
+        <button
+          type="submit"
+          class="w-full bg-orange-600 text-white font-medium py-2 px-4 rounded-md hover:bg-orange-700 transition-colors"
+        >
+          Search Patient
+        </button>
+      </form>
+    </div>
+
+    <!-- Patient Details Section -->
+    <div *ngIf="patientFound && !showConfirmation" class="bg-blue-50 border border-blue-200 rounded-lg p-6 mb-6">
+      <h2 class="text-xl font-semibold mb-4 text-gray-800">Patient Details</h2>
+      <div class="grid grid-cols-2 gap-4 mb-6">
+        <div>
+          <label class="text-sm font-medium text-gray-600">ID</label>
+          <p class="text-lg text-gray-900">{{ patientFound.id }}</p>
+        </div>
+        <div>
+          <label class="text-sm font-medium text-gray-600">Email</label>
+          <p class="text-lg text-gray-900">{{ patientFound.email }}</p>
+        </div>
+        <div>
+          <label class="text-sm font-medium text-gray-600">First Name</label>
+          <p class="text-lg text-gray-900">{{ patientFound.first_name }}</p>
+        </div>
+        <div>
+          <label class="text-sm font-medium text-gray-600">Last Name</label>
+          <p class="text-lg text-gray-900">{{ patientFound.last_name }}</p>
+        </div>
+        <div>
+          <label class="text-sm font-medium text-gray-600">Age</label>
+          <p class="text-lg text-gray-900">{{ patientFound.age }}</p>
+        </div>
+        <div>
+          <label class="text-sm font-medium text-gray-600">Weight (kg)</label>
+          <p class="text-lg text-gray-900">{{ patientFound.weight }}</p>
+        </div>
+        <div>
+          <label class="text-sm font-medium text-gray-600">Height (cm)</label>
+          <p class="text-lg text-gray-900">{{ patientFound.height }}</p>
+        </div>
+        <div>
+          <label class="text-sm font-medium text-gray-600">Chronic Diseases</label>
+          <p class="text-lg text-gray-900">{{ patientFound.chronic_diseases }}</p>
+        </div>
+      </div>
+
+      <div class="flex gap-4">
+        <button
+          type="button"
+          (click)="initiateDelete()"
+          class="flex-1 bg-red-600 text-white font-medium py-2 px-4 rounded-md hover:bg-red-700 transition-colors"
+        >
+          Delete Patient
+        </button>
+        <button
+          type="button"
+          (click)="resetForm()"
+          class="flex-1 bg-gray-400 text-white font-medium py-2 px-4 rounded-md hover:bg-gray-500 transition-colors"
+        >
+          Search Another
+        </button>
+      </div>
+    </div>
+
+    <!-- Confirmation Dialog -->
+    <div *ngIf="showConfirmation" class="bg-red-50 border-4 border-red-400 rounded-lg p-6 mb-6">
+      <div class="mb-4">
+        <h3 class="text-2xl font-bold text-red-700 mb-2">⚠️ Confirm Deletion</h3>
+        <p class="text-gray-700 mb-4">
+          Are you absolutely sure you want to delete this patient? This action cannot be undone.
+        </p>
+        <div class="bg-white border border-red-300 rounded p-4 mb-4">
+          <p class="text-gray-800">
+            <span class="font-semibold">{{ patientFound?.first_name }} {{ patientFound?.last_name }}</span>
+            (ID: {{ patientFound?.id }})
+          </p>
+          <p class="text-gray-600">{{ patientFound?.email }}</p>
+        </div>
+      </div>
+
+      <div class="flex gap-4">
+        <button
+          type="button"
+          (click)="confirmDelete()"
+          [disabled]="isDeleting"
+          class="flex-1 bg-red-600 text-white font-medium py-2 px-4 rounded-md hover:bg-red-700 transition-colors disabled:bg-gray-400 disabled:cursor-not-allowed"
+        >
+          <span *ngIf="!isDeleting">Yes, Delete Patient</span>
+          <span *ngIf="isDeleting">Deleting...</span>
+        </button>
+        <button
+          type="button"
+          (click)="cancelDelete()"
+          [disabled]="isDeleting"
+          class="flex-1 bg-gray-600 text-white font-medium py-2 px-4 rounded-md hover:bg-gray-700 transition-colors disabled:bg-gray-400 disabled:cursor-not-allowed"
+        >
+          Cancel
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

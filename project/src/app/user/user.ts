@@ -24,5 +24,8 @@ export class User {
   updateUser(id:number,user:UserC){
     return this.http.patch("http://localhost:8000/user/users/"+JSON.stringify(id)+"/update/",user) as Observable<UserC>
   }
+  deleteUser(id:number){
+    return this.http.delete("http://localhost:8000/user/users/"+JSON.stringify(id))
+  }
 
 }
