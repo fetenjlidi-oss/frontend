@@ -9,7 +9,7 @@ const routes: Routes = [
   {path:"create", component:Create},
   {path:"update/:id",component:Update},
   {path:"delete",component:Delete},
-  {path:"listpatient",component:Listpatient}
+  {path:"",component:Listpatient}
   
 ];
 

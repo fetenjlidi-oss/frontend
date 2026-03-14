@@ -5,6 +5,8 @@ import { Patient } from '../patient';
 
 @Component({
   selector: 'app-update',
+    standalone: false,
+
   templateUrl: './update.html',
   styleUrls: ['./update.css']
 })
