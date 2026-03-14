@@ -5,18 +5,18 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { PatientRoutingModule } from './patient-routing.module';
 import { Listpatient } from './listpatient/listpatient';
 import { Detail } from './detail/detail';
-import { Update } from './update/update';
 import { Delete } from './delete/delete';
 import { Create } from './create/create';
+import { Update } from './update/update';
 
 
 @NgModule({
   declarations: [
     Listpatient,
     Detail,
-    Update,
     Delete,
-    Create
+    Create,
+    Update
   ],
   imports: [
     CommonModule,

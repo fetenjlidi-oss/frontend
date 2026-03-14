@@ -11,6 +11,9 @@
         <li class="text-slate-900 dark:text-white">Update</li>
       </ol>
     </nav>
+<div *ngIf="showSuccessAlert" class="p-4 mb-4 text-sm text-fg-success-strong rounded-base bg-success-soft" role="alert">
+  <span class="font-medium">Success alert!</span> Your user avec id {{idUser}} details have been updated successfully..
+</div>
 
     <div class="overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm dark:border-slate-800 dark:bg-slate-900">
       <div class="border-b border-slate-200 bg-slate-50 px-6 py-5 dark:border-slate-800 dark:bg-slate-900/40">

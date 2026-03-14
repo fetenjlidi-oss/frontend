@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, signal } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { text } from 'stream/consumers';
 import { Auth } from '../auth';
@@ -11,7 +11,14 @@ import { Router } from '@angular/router';
   styleUrl: './login.css',
 })
 export class Login {
+  activeTab    = signal<'login' | 'register'>('login');
+  
   title: string = " faten"
+    isLoading    = signal(false);
+      showPassword = signal(false);
+  loginError   = signal('');
+  currentYear  = new Date().getFullYear();
+
   age: number = 20
   forms: FormGroup
   constructor(private fb: FormBuilder, private authService: Auth , private router:Router) {
@@ -21,6 +28,14 @@ export class Login {
 
     })
   }
+  
+    get email()    { return this.forms.get('email');    }
+  get password() { return this.forms.get('password'); }
+ 
+  togglePassword(): void {
+    this.showPassword.update(v => !v);
+  }
+ 
   submit() {
     const expiresIn = 24 * 60 * 60 * 1000; 
   const expirationDate = new Date(new Date().getTime() + expiresIn);
@@ -32,6 +47,15 @@ export class Login {
           document.cookie = `role=${data.user.role}; Max-Age=${expirationDate}; path=/`;
 
            this.router.navigate(['/dashboard']); 
+             setTimeout(() => {
+      this.isLoading.set(false);
+      console.log('Login payload:', this.forms.value);
+      // On error → this.loginError.set('Invalid credentials. Please try again.');
+    }, 1500);
             })
   }
+    switchTab(tab: 'login' | 'register'): void {
+    this.activeTab.set(tab);
+  }
+
 }
