@@ -1,1 +1,816 @@
-<p>dashboard works!</p>
+<div class="dashboard-layout">
+  
+  <aside class="sidebar">
+    <div class="brand">
+      <span class="brand-icon">💊</span>
+      <div>
+        <div style="font-size: 1.2rem;">MediCare</div>
+        <div style="font-size: 0.7rem; color: var(--text-muted); font-weight: normal;">Admin Dashboard</div>
+      </div>
+    </div>
+
+    <div class="menu-section">
+      <div class="menu-title">Menu Principal</div>
+      <a class="menu-item active">
+        <span class="icon">⊞</span> Tableau de bord
+      </a>
+      <a class="menu-item">
+        <span class="icon">👤</span> Patients
+      </a>
+      <a class="menu-item">
+        <span class="icon">💊</span> Médicaments
+      </a>
+      <a class="menu-item">
+        <span class="icon">🔔</span> Rappels & Notifications
+      </a>
+      <a class="menu-item">
+        <span class="icon">📅</span> Rendez-vous
+      </a>
+      <a class="menu-item">
+        <span class="icon">🎯</span> Reconnaissance
+      </a>
+      <a class="menu-item">
+        <span class="icon">📊</span> Rapports & Statistiques
+      </a>
+      <a class="menu-item">
+        <span class="icon">📁</span> Catégories d'oubli
+      </a>
+      <a class="menu-item">
+        <span class="icon">⚙️</span> Paramètres
+      </a>
+    </div>
+
+    <div class="menu-section" style="margin-top: auto;">
+      <div class="menu-title">Autre</div>
+      <a class="menu-item">
+        <span class="icon">❓</span> Aide & Support
+      </a>
+      <a class="menu-item">
+        <span class="icon">🚪</span> Déconnexion
+      </a>
+    </div>
+  </aside>
+
+  <main class="main-content">
+    
+    <header class="header">
+      <div>
+        <span style="cursor: pointer; font-size: 1.2rem;">☰</span>
+      </div>
+      
+      <div class="search-bar">
+        <span>🔍</span>
+        <input type="text" placeholder="Rechercher un patient, médicament, rendez-vous...">
+      </div>
+
+      <div class="header-actions">
+        <div class="notification">
+          <span>🔔</span>
+          <span class="badge">5</span>
+        </div>
+        
+        <div class="user-profile">
+          <img src="https://i.pravatar.cc/150?img=11" alt="Admin" class="avatar">
+          <div class="user-info">
+            <h4>Admin</h4>
+            <p>Administrateur</p>
+          </div>
+          <span>▼</span>
+        </div>
+      </div>
+    </header>
+
+    <div class="dashboard-body">
+      
+      <div class="page-header">
+        <div>
+          <h1>Bonjour, Admin 👋</h1>
+          <p>Voici un aperçu de la gestion des patients et des rappels.</p>
+        </div>
+        <div class="date-picker">
+          <span>📅</span> 20 Mai 2024 <span>▼</span>
+        </div>
+      </div>
+
+      <div class="stats-grid">
+        <div class="stat-card">
+          <div class="stat-info">
+            <h3 style="color: var(--primary);">Patients actifs</h3>
+            <h2>1,248</h2>
+            <span class="trend up">+12% ce mois</span>
+          </div>
+          <div class="stat-icon" style="background: var(--primary-light); color: var(--primary);">👥</div>
+        </div>
+
+        <div class="stat-card">
+          <div class="stat-info">
+            <h3 style="color: var(--success);">Prises oubliées</h3>
+            <h2>342</h2>
+            <span class="trend down">-8% ce mois</span>
+          </div>
+          <div class="stat-icon" style="background: var(--success-bg); color: var(--success);">📅</div>
+        </div>
+
+        <div class="stat-card">
+          <div class="stat-info">
+            <h3 style="color: var(--danger);">Rendez-vous manqués</h3>
+            <h2>89</h2>
+            <span class="trend up-danger">+5% ce mois</span>
+          </div>
+          <div class="stat-icon" style="background: var(--danger-bg); color: var(--danger);">🗓️</div>
+        </div>
+
+        <div class="stat-card">
+          <div class="stat-info">
+            <h3 style="color: var(--info);">Taux d'adhésion</h3>
+            <h2>78%</h2>
+            <span class="trend up-info">+7% ce mois</span>
+          </div>
+          <div class="stat-icon" style="background: var(--info-bg); color: var(--info);">📈</div>
+        </div>
+      </div>
+
+      <div class="middle-grid">
+        <div class="card">
+          <div class="card-header">
+            <h3 class="card-title">Statistiques des oublis</h3>
+            <button class="btn-outline">Ce mois ▼</button>
+          </div>
+          <div class="chart-area">
+            <div class="donut-placeholder">
+               <span>342</span>
+               <small>Total</small>
+            </div>
+            <div class="chart-legend">
+              <ul>
+                <li><span style="color: var(--text-muted);"><span class="legend-dot" style="background: var(--primary);"></span> Médicaments</span> <strong>62%</strong></li>
+                <li><span style="color: var(--text-muted);"><span class="legend-dot" style="background: var(--success);"></span> Rendez-vous</span> <strong>26%</strong></li>
+                <li><span style="color: var(--text-muted);"><span class="legend-dot" style="background: var(--warning);"></span> Les deux</span> <strong>12%</strong></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-header">
+            <h3 class="card-title">Patients ayant oublié récemment</h3>
+            <button class="btn-outline">Voir tout</button>
+          </div>
+          <div class="list-container">
+            <div class="list-item">
+              <div class="user-cell">
+                <img src="https://i.pravatar.cc/150?img=5" alt="Fatima Zahra">
+                <div class="user-details">
+                  <h5>Fatima Zahra</h5>
+                  <p>A oublié 3 prises</p>
+                </div>
+              </div>
+              <span class="time-ago urgent">Aujourd'hui</span>
+            </div>
+            <div class="list-item">
+              <div class="user-cell">
+                <img src="https://i.pravatar.cc/150?img=11" alt="Mohamed Ali">
+                <div class="user-details">
+                  <h5>Mohamed Ali</h5>
+                  <p>A oublié 2 rendez-vous</p>
+                </div>
+              </div>
+              <span class="time-ago urgent" style="color: var(--warning);">Hier</span>
+            </div>
+            <div class="list-item">
+              <div class="user-cell">
+                <img src="https://i.pravatar.cc/150?img=9" alt="Sara Benali">
+                <div class="user-details">
+                  <h5>Sara Benali</h5>
+                  <p>A oublié 1 prise</p>
+                </div>
+              </div>
+              <span class="time-ago">Il y a 2 jours</span>
+            </div>
+            <div class="list-item">
+              <div class="user-cell">
+                <img src="https://i.pravatar.cc/150?img=12" alt="Youssef Amine">
+                <div class="user-details">
+                  <h5>Youssef Amine</h5>
+                  <p>A oublié 1 rendez-vous</p>
+                </div>
+              </div>
+              <span class="time-ago">Il y a 3 jours</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-header">
+            <h3 class="card-title">Catégories d'oubli</h3>
+            <button class="btn-outline">Voir tout</button>
+          </div>
+          <div class="list-container">
+            <div class="list-item">
+              <div class="user-cell">
+                <span class="icon" style="color: var(--primary); background: var(--primary-light); padding: 6px; border-radius: 50%;">💊</span>
+                <span style="font-size: 0.9rem; font-weight: 500;">Antibiotiques</span>
+              </div>
+              <div style="font-size: 0.85rem;">28% <span style="color: var(--danger);">↑</span></div>
+            </div>
+            <div class="list-item">
+              <div class="user-cell">
+                <span class="icon" style="color: var(--primary); background: var(--primary-light); padding: 6px; border-radius: 50%;">❤️</span>
+                <span style="font-size: 0.9rem; font-weight: 500;">Antihypertenseurs</span>
+              </div>
+              <div style="font-size: 0.85rem;">22% <span style="color: var(--success);">↓</span></div>
+            </div>
+            <div class="list-item">
+              <div class="user-cell">
+                <span class="icon" style="color: var(--primary); background: var(--primary-light); padding: 6px; border-radius: 50%;">💉</span>
+                <span style="font-size: 0.9rem; font-weight: 500;">Antidiabétiques</span>
+              </div>
+              <div style="font-size: 0.85rem;">18% <span style="color: var(--danger);">↑</span></div>
+            </div>
+            <div class="list-item">
+              <div class="user-cell">
+                <span class="icon" style="color: var(--success); background: var(--success-bg); padding: 6px; border-radius: 50%;">🌿</span>
+                <span style="font-size: 0.9rem; font-weight: 500;">Vitamines & Compléments</span>
+              </div>
+              <div style="font-size: 0.85rem;">15% <span style="color: var(--success);">↓</span></div>
+            </div>
+            <div class="list-item">
+              <div class="user-cell">
+                <span class="icon" style="color: var(--primary); background: var(--primary-light); padding: 6px; border-radius: 50%;">➕</span>
+                <span style="font-size: 0.9rem; font-weight: 500;">Autres</span>
+              </div>
+              <div style="font-size: 0.85rem;">17% <span style="color: var(--text-muted);">-</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="bottom-grid">
+        <div class="card">
+          <div class="card-header">
+            <h3 class="card-title">Rappels à venir aujourd'hui</h3>
+            <button class="btn-outline">Voir tout</button>
+          </div>
+          <table>
+            <thead>
+              <tr>
+                <th>Patient</th>
+                <th>Médicament / Rendez-vous</th>
+                <th>Heure</th>
+                <th>Type</th>
+                <th>Statut</th>
+                <th>Action</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>
+                  <div class="user-cell">
+                    <img src="https://i.pravatar.cc/150?img=5" alt="">
+                    <span style="font-size: 0.85rem; font-weight: 500;">Fatima Zahra</span>
+                  </div>
+                </td>
+                <td>Amoxicilline 500mg</td>
+                <td>08:00</td>
+                <td>Médicament</td>
+                <td><span class="status-badge">À venir</span></td>
+                <td><button class="btn-outline">Voir</button></td>
+              </tr>
+              <tr>
+                <td>
+                  <div class="user-cell">
+                    <img src="https://i.pravatar.cc/150?img=11" alt="">
+                    <span style="font-size: 0.85rem; font-weight: 500;">Mohamed Ali</span>
+                  </div>
+                </td>
+                <td>Rendez-vous cardiologie</td>
+                <td>10:30</td>
+                <td>Rendez-vous</td>
+                <td><span class="status-badge">À venir</span></td>
+                <td><button class="btn-outline">Voir</button></td>
+              </tr>
+              <tr>
+                <td>
+                  <div class="user-cell">
+                    <img src="https://i.pravatar.cc/150?img=9" alt="">
+                    <span style="font-size: 0.85rem; font-weight: 500;">Sara Benali</span>
+                  </div>
+                </td>
+                <td>Metformine 850mg</td>
+                <td>14:00</td>
+                <td>Médicament</td>
+                <td><span class="status-badge">À venir</span></td>
+                <td><button class="btn-outline">Voir</button></td>
+              </tr>
+              <tr>
+                <td>
+                  <div class="user-cell">
+                    <img src="https://i.pravatar.cc/150?img=12" alt="">
+                    <span style="font-size: 0.85rem; font-weight: 500;">Youssef Amine</span>
+                  </div>
+                </td>
+                <td>Amlodipine 5mg</td>
+                <td>20:00</td>
+                <td>Médicament</td>
+                <td><span class="status-badge">À venir</span></td>
+                <td><button class="btn-outline">Voir</button></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="card">
+          <h3 class="card-title" style="margin-bottom: 20px;">Actions rapides</h3>
+          
+          <button class="action-btn btn-purple">
+            <i>+</i> Ajouter un patient
+          </button>
+          
+          <button class="action-btn btn-green">
+            <i>+</i> Ajouter un médicament
+          </button>
+          
+          <button class="action-btn btn-orange">
+            <i>+</i> Créer un rappel
+          </button>
+          
+          <button class="action-btn btn-blue">
+            <i>+</i> Planifier un rendez-vous
+          </button>
+        </div>
+      </div>
+
+    </div>
+  </main>
+</div>
+<style>
+  /* Variables de couleurs et paramètres globaux */
+  :root {
+    --primary: #7b61ff;
+    --primary-light: #f0edff;
+    --bg-main: #f9fafb;
+    --bg-card: #ffffff;
+    --text-dark: #111827;
+    --text-muted: #6b7280;
+    --border-color: #f3f4f6;
+    
+    --success: #10b981;
+    --success-bg: #ecfdf5;
+    --danger: #ef4444;
+    --danger-bg: #fef2f2;
+    --info: #3b82f6;
+    --info-bg: #eff6ff;
+    --warning: #f59e0b;
+  }
+
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  }
+
+  /* Layout principal */
+  .dashboard-layout {
+    display: flex;
+    height: 100vh;
+    background-color: var(--bg-main);
+    color: var(--text-dark);
+    overflow: hidden;
+  }
+
+  /* Sidebar */
+  .sidebar {
+    width: 260px;
+    background-color: var(--bg-card);
+    border-right: 1px solid var(--border-color);
+    display: flex;
+    flex-direction: column;
+    padding: 20px 0;
+    overflow-y: auto;
+  }
+
+  .brand {
+    display: flex;
+    align-items: center;
+    padding: 0 24px;
+    margin-bottom: 30px;
+    font-size: 1.25rem;
+    font-weight: bold;
+    color: var(--text-dark);
+  }
+
+  .brand-icon {
+    color: var(--primary);
+    font-size: 1.5rem;
+    margin-right: 10px;
+  }
+
+  .menu-section {
+    margin-bottom: 20px;
+  }
+
+  .menu-title {
+    padding: 0 24px;
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    font-weight: 600;
+    margin-bottom: 10px;
+    letter-spacing: 0.05em;
+  }
+
+  .menu-item {
+    display: flex;
+    align-items: center;
+    padding: 12px 24px;
+    color: var(--text-muted);
+    text-decoration: none;
+    font-size: 0.9rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+
+  .menu-item:hover {
+    background-color: var(--bg-main);
+    color: var(--primary);
+  }
+
+  .menu-item.active {
+    background-color: var(--primary-light);
+    color: var(--primary);
+    border-left: 4px solid var(--primary);
+    padding-left: 20px;
+  }
+
+  .menu-item i, .menu-item span.icon {
+    margin-right: 12px;
+    font-size: 1.1rem;
+  }
+
+  /* Main Content */
+  .main-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto;
+  }
+
+  /* Header */
+  .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 16px 32px;
+    background-color: var(--bg-card);
+    border-bottom: 1px solid var(--border-color);
+  }
+
+  .search-bar {
+    display: flex;
+    align-items: center;
+    background-color: var(--bg-main);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    padding: 8px 16px;
+    width: 400px;
+  }
+
+  .search-bar input {
+    border: none;
+    background: transparent;
+    outline: none;
+    width: 100%;
+    margin-left: 8px;
+    color: var(--text-dark);
+  }
+
+  .header-actions {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+  }
+
+  .notification {
+    position: relative;
+    cursor: pointer;
+    color: var(--text-muted);
+  }
+
+  .badge {
+    position: absolute;
+    top: -5px;
+    right: -5px;
+    background-color: var(--danger);
+    color: white;
+    border-radius: 50%;
+    width: 16px;
+    height: 16px;
+    font-size: 0.65rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .user-profile {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: var(--border-color);
+    object-fit: cover;
+  }
+
+  .user-info h4 {
+    font-size: 0.9rem;
+    margin: 0;
+  }
+
+  .user-info p {
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    margin: 0;
+  }
+
+  /* Dashboard Body */
+  .dashboard-body {
+    padding: 32px;
+  }
+
+  .page-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin-bottom: 24px;
+  }
+
+  .page-header h1 {
+    font-size: 1.5rem;
+    margin-bottom: 4px;
+  }
+
+  .page-header p {
+    color: var(--text-muted);
+    font-size: 0.9rem;
+  }
+
+  .date-picker {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 16px;
+    background-color: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    font-size: 0.9rem;
+    font-weight: 500;
+  }
+
+  /* Stats Cards */
+  .stats-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+    margin-bottom: 24px;
+  }
+
+  .stat-card {
+    background-color: var(--bg-card);
+    padding: 20px;
+    border-radius: 12px;
+    border: 1px solid var(--border-color);
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+  }
+
+  .stat-info h3 {
+    font-size: 0.9rem;
+    color: var(--text-dark);
+    font-weight: 600;
+    margin-bottom: 8px;
+  }
+
+  .stat-info h2 {
+    font-size: 1.8rem;
+    margin-bottom: 8px;
+  }
+
+  .trend {
+    font-size: 0.8rem;
+    font-weight: 500;
+  }
+
+  .trend.up { color: var(--primary); }
+  .trend.down { color: var(--success); }
+  .trend.up-danger { color: var(--danger); }
+  .trend.up-info { color: var(--info); }
+
+  .stat-icon {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+  }
+
+  /* Middle Grid */
+  .middle-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 20px;
+    margin-bottom: 24px;
+  }
+
+  .card {
+    background-color: var(--bg-card);
+    border-radius: 12px;
+    border: 1px solid var(--border-color);
+    padding: 20px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+  }
+
+  .card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+  }
+
+  .card-title {
+    font-size: 1rem;
+    font-weight: 600;
+  }
+
+  .btn-outline {
+    padding: 4px 12px;
+    border: 1px solid var(--border-color);
+    background: transparent;
+    border-radius: 6px;
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    cursor: pointer;
+  }
+
+  /* Custom Chart Area (Simplified) */
+  .chart-area {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+  }
+  
+  .donut-placeholder {
+    width: 140px;
+    height: 140px;
+    border-radius: 50%;
+    border: 25px solid var(--primary);
+    border-top-color: var(--success);
+    border-left-color: var(--warning);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+  }
+
+  .donut-placeholder span {
+    font-size: 1.5rem;
+    font-weight: bold;
+  }
+  .donut-placeholder small {
+    font-size: 0.75rem;
+    color: var(--text-muted);
+  }
+
+  .chart-legend ul {
+    list-style: none;
+  }
+  .chart-legend li {
+    margin-bottom: 12px;
+    font-size: 0.85rem;
+    display: flex;
+    flex-direction: column;
+  }
+  .chart-legend li strong {
+    font-size: 1rem;
+  }
+  .legend-dot {
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    border-radius: 2px;
+    margin-right: 8px;
+  }
+
+  /* List Items */
+  .list-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 12px 0;
+    border-bottom: 1px solid var(--border-color);
+  }
+  .list-item:last-child {
+    border-bottom: none;
+  }
+
+  .user-cell {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .user-cell img {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+  }
+
+  .user-details h5 {
+    font-size: 0.9rem;
+    margin-bottom: 2px;
+  }
+  .user-details p {
+    font-size: 0.75rem;
+    color: var(--text-muted);
+  }
+
+  .time-ago {
+    font-size: 0.75rem;
+    color: var(--text-muted);
+  }
+  .time-ago.urgent {
+    color: var(--danger);
+  }
+
+  /* Bottom Grid */
+  .bottom-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 20px;
+  }
+
+  /* Table */
+  table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  th {
+    text-align: left;
+    padding: 12px 8px;
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    font-weight: 500;
+    border-bottom: 1px solid var(--border-color);
+  }
+
+  td {
+    padding: 12px 8px;
+    font-size: 0.85rem;
+    vertical-align: middle;
+    border-bottom: 1px solid var(--border-color);
+  }
+
+  tr:last-child td { border-bottom: none; }
+
+  .status-badge {
+    padding: 4px 10px;
+    border-radius: 20px;
+    font-size: 0.75rem;
+    font-weight: 500;
+    background-color: var(--info-bg);
+    color: var(--info);
+  }
+
+  /* Action Buttons */
+  .action-btn {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    padding: 12px 16px;
+    margin-bottom: 12px;
+    border-radius: 8px;
+    font-size: 0.9rem;
+    font-weight: 500;
+    cursor: pointer;
+    border: 1px solid transparent;
+    transition: 0.2s;
+  }
+
+  .action-btn i { margin-right: 10px; }
+  
+  .btn-purple { background-color: #f5f3ff; color: var(--primary); border-color: #ede9fe; }
+  .btn-green { background-color: #f0fdf4; color: var(--success); border-color: #dcfce7; }
+  .btn-orange { background-color: #fff7ed; color: var(--warning); border-color: #ffedd5; }
+  .btn-blue { background-color: #eff6ff; color: var(--info); border-color: #dbeafe; }
+
+</style>

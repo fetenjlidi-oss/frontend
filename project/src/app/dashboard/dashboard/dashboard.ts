@@ -8,4 +8,8 @@ import { Component } from '@angular/core';
 })
 export class Dashboard {
 
+  patientsActifs = 1248;
+  prisesOubliees = 342;
+  rdvManques = 89;
+  tauxAdhesion = 78;
 }
